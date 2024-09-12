@@ -1,0 +1,78 @@
+*, *::after, *::before {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: 1fr auto;
+  grid-template-areas: 
+    "image sidebar"
+    "slider sidebar";
+  height: 100vh;
+  width: 100vw;
+  background-color: #DDD;
+}
+
+.main-image {
+  grid-area: image;
+  width: 100%;
+  height: 100%;
+  background-image: url("./assets/images/johnny-varjas.jpg");
+  background-position: top center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+aside {
+  grid-area: sidebar;
+  background-color: hsl(266, 64%, 15%);
+  border-left: 3px solid hsl(266, 100%, 75%);
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.sidebar-item {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background-color: hsl(266, 64%, 15%);
+  color: #f7f7f7;
+  padding: 1rem;
+  position: relative;
+  transition: background-color 0.15s;
+}
+
+.sidebar-item::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 10%;
+  width: 80%;
+  height: 1px;
+  background-color: hsl(266, 100%, 75%);
+}
+
+.sidebar-item:hover, .sidebar-item:focus {
+  background-color: hsl(266, 59%, 26%)
+}
+
+.sidebar-item.active {
+  background-color: hsl(266, 100%, 75%);
+}
+
+.slider-container {
+  grid-area: slider;
+  margin-top: 2rem;
+  padding: 2rem;
+}
+
+.slider {
+  width: 100%;
+  cursor: pointer;
+}
